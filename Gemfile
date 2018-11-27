@@ -17,6 +17,13 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+gem "sprockets"
+
+
 gem 'devise'
 
 # Use Capistrano for deployment
