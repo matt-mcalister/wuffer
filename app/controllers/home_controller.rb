@@ -1,4 +1,9 @@
 class HomeController < ApplicationController
-  def index
+  def landing
+    if current_dog
+      render :home
+    else
+      render :landing
+    end
   end
 end
