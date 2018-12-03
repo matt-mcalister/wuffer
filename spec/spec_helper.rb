@@ -97,4 +97,8 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+
+  # enable "should" syntax
+  config.expect_with(:rspec) { |c| c.syntax = :should }
 end

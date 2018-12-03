@@ -12,15 +12,15 @@ RSpec.describe Woof, type: :model do
   it "has a rewoof_id if it has no text" do
     original_woof = FactoryBot.build_stubbed(:woof)
     rewoof = FactoryBot.build_stubbed(:rewoof, rewoof: original_woof)
-    expect(rewoof.rewoof).to eq(original_woof)
-    expect(rewoof.text).to be_nil
+    rewoof.rewoof.should eq(original_woof)
+    rewoof.text.should be_nil
   end
 
   it "has text if it has no rewoof_id" do
     text = "Woof woof!"
     woof = FactoryBot.build_stubbed(:woof, text: text)
-    expect(woof.rewoof).to be_nil
-    expect(woof.text).to eq(text)
+    woof.rewoof.should be_nil
+    woof.text.should eq(text)
   end
 
   it "raises an error if it has both text and a rewoof_id" do
@@ -34,7 +34,7 @@ RSpec.describe Woof, type: :model do
     dog = FactoryBot.build_stubbed(:dog)
     original_woof = FactoryBot.build_stubbed(:woof, dog: dog)
     rewoof = FactoryBot.build_stubbed(:rewoof, rewoof: original_woof)
-    expect(rewoof.orginal_dog).to eq(dog)
+    rewoof.orginal_dog.should eq(dog)
   end
 
 end

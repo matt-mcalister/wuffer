@@ -5,7 +5,7 @@ RSpec.describe HomeController, type: :controller do
   describe "GET #landing" do
     it "returns http success" do
       get :landing
-      expect(response).to have_http_status(:success)
+      response.should  have_http_status(:success)
     end
 
     it "renders :landing when no user is logged in" do
