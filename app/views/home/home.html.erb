@@ -1,1 +1,5 @@
 <p>HOME</p>
+<% @woofs.each do |w| %>
+  <% @woof = w %>
+  <%= render "partials/woof" %>
+<% end %>
