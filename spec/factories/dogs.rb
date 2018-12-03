@@ -6,7 +6,7 @@ FactoryBot.define do
     password { "somethingsecure"}
   end
 
-  factory :other_dog, aliases: [:scarlet, :follower_dog] do
+  factory :other_dog, class: "Dog", aliases: [:scarlet, :follower_dog] do
     username { "scarlet_pup" }
     image_url { "https://upload.wikimedia.org/wikipedia/commons/b/b6/Australian_Terrier_adult_male.jpg" }
     email { "other@email.gov" }

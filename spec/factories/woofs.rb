@@ -6,7 +6,7 @@ FactoryBot.define do
   end
 
   factory :rewoof, class: "Woof" do
-    follower_dog
+    association :dog, factory: :follower_dog
     association :rewoof, factory: :woof
     text { nil }
   end

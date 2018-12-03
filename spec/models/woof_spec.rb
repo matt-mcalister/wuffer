@@ -4,28 +4,37 @@ RSpec.describe Woof, type: :model do
   it { should belong_to(:dog) }
 
   it "raises an error if it contains no text or rewoof_id" do
-    woof = FactoryBot.build(:no_content)
+    woof = FactoryBot.build_stubbed(:no_content)
     woof.valid?
     woof.errors.full_messages.should include("Woof must contain either text or a rewoof_id")
   end
 
   it "has a rewoof_id if it has no text" do
-
+    original_woof = FactoryBot.build_stubbed(:woof)
+    rewoof = FactoryBot.build_stubbed(:rewoof, rewoof: original_woof)
+    expect(rewoof.rewoof).to eq(original_woof)
+    expect(rewoof.text).to be_nil
   end
 
   it "has text if it has no rewoof_id" do
-
+    text = "Woof woof!"
+    woof = FactoryBot.build_stubbed(:woof, text: text)
+    expect(woof.rewoof).to be_nil
+    expect(woof.text).to eq(text)
   end
 
   it "raises an error if it has both text and a rewoof_id" do
-
+    woof = FactoryBot.build_stubbed(:too_much_content)
+    woof.valid?
+    woof.errors.full_messages.should include("Woof must not have both text and a rewoof_id")
   end
 
-  # woof should know how many times it has been rewoofed (rewoof_count)
 
-  # REWOOF
-  # if it is a rewoof, it should respond to the method "original_dog",
-    # which gives back the dog object that is the author of the original woof
-
+  it "should respond to the method 'orginal_dog', which returns the author dog if it is a rewoof" do
+    dog = FactoryBot.build_stubbed(:dog)
+    original_woof = FactoryBot.build_stubbed(:woof, dog: dog)
+    rewoof = FactoryBot.build_stubbed(:rewoof, rewoof: original_woof)
+    expect(rewoof.orginal_dog).to eq(dog)
+  end
 
 end
