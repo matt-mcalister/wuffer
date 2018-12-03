@@ -8,5 +8,5 @@ RSpec.describe Dog, type: :model do
        is_at_least(8).
        on(:create)
    end
-
+   it { should have_many(:woofs) }
 end

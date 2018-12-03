@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181127192000) do
+ActiveRecord::Schema.define(version: 20181203164320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,4 +29,15 @@ ActiveRecord::Schema.define(version: 20181127192000) do
     t.index ["reset_password_token"], name: "index_dogs_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "woofs", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "dog_id"
+    t.integer  "rewoof_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_woofs_on_dog_id", using: :btree
+    t.index ["rewoof_id"], name: "index_woofs_on_rewoof_id", using: :btree
+  end
+
+  add_foreign_key "woofs", "dogs"
 end
