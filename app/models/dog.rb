@@ -4,5 +4,7 @@ class Dog < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :woofs
+  has_many :followers, class_name: "Follows", foreign_key: "follower_id"
+  has_many :followings, class_name: "Follows", foreign_key: "following_id"
   validates :username, presence: true, uniqueness: true, length: { minimum: 8 }
 end
