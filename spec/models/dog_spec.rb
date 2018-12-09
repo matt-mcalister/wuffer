@@ -12,4 +12,9 @@ RSpec.describe Dog, type: :model do
 
    it { should have_many(:followers).class_name("Follow") }
    it { should have_many(:followings).class_name("Follow") }
+
+   it "responds to a method #feed that returns an array of all woofs related to dog sorted by date" do
+     stella = FactoryBot.build_stubbed(:stella)
+     scarlet = FactoryBot.build_stubbed(:scarlet)
+   end
 end
